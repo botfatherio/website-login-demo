@@ -1,0 +1,25 @@
+{
+	"manifest_version": 1,
+	"script": "demo.js",
+	"config": {
+		"groups": [
+			{
+				"name": "Login details",
+				"options": [
+					{
+						"id": "username",
+						"type": "string",
+						"label": "Your Botfather.io username",
+						"default": ""
+					},
+					{
+						"id": "password",
+						"type": "password",
+						"label": "Your Botfather.io password",
+						"default": ""
+					}
+				]
+			}
+		]
+	}
+}
