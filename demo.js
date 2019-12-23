@@ -8,23 +8,24 @@ function main()
 	}
 
 	// Load the Botfather login page
-	Browser.loadUrl("https://botfather.io/accounts/login/");
-	Browser.finishLoading();
+	var browser = new Browser("Main Browser", new Site(1200, 800));
+	browser.loadUrl("https://botfather.io/accounts/login/");
+	browser.finishLoading();
 
 	// Fill out the username and password field
 	var u = Config.getValue("username");
 	var p = Config.getValue("password");
 
-	Browser.executeJavascript("document.getElementById('id_username').value = '" + u + "';");
-	Browser.executeJavascript("document.getElementById('id_password').value = '" + p + "';");
+	browser.executeJavascript("document.getElementById('id_username').value = '" + u + "';");
+	browser.executeJavascript("document.getElementById('id_password').value = '" + p + "';");
 
 	// Submit the form
-	Browser.executeJavascript("document.getElementById('id_password').form.submit();");
+	browser.executeJavascript("document.getElementById('id_password').form.submit();");
 	Helper.sleep(2);
-	Browser.finishLoading();
+	browser.finishLoading();
 
 	// Tell the script user whether login succeeded or not
-	if (Browser.getUrl().toString().indexOf("/accounts/login") !== -1)
+	if (browser.getUrl().toString().indexOf("/accounts/login") !== -1)
 	{
 		Helper.log("Looks like login failed. Open the browser to check for yourself.");
 		return;
